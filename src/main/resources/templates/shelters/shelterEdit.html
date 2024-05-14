@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shelter Edit</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/details.css}" />
+  </head>
+  <body>
+    <div th:replace="./fragments/headerFragment :: header"></div>
+    <div class="content">
+      <h1 th:text="${title}"></h1>
+      <div class="detailsBlock">
+        <form
+          action="#"
+          th:action="@{/shelters/save}"
+          th:object="${shelter}"
+          method="post"
+        >
+          <input type="hidden" th:field="*{id}" />
+          <label> Name </label>
+          <input type="text" th:field="*{name}" placeholder="Shelter Name" />
+          <br />
+          <label> Address Line 1 </label>
+          <input
+            type="text"
+            th:field="*{addressLine1}"
+            placeholder="Shelter Address Line 1"
+          />
+          <br />
+          <label> Address Line 2 </label>
+          <input
+            type="text"
+            th:field="*{addressLine2}"
+            placeholder="Shelter Address Line 2"
+          />
+          <br />
+          <label> City </label>
+          <input type="text" th:field="*{city}" placeholder="Shelter City" />
+          <br />
+          <label> State </label>
+          <input type="text" th:field="*{state}" placeholder="Shelter State" />
+          <br />
+          <label> Zip </label>
+          <input type="text" th:field="*{zip}" placeholder="Shelter Zip" />
+          <br />
+          <label> Phone Number </label>
+          <input
+            type="text"
+            th:field="*{phoneNumber}"
+            placeholder="Shelter Phone Number"
+          />
+          <br />
+          <label> Email </label>
+          <input type="text" th:field="*{email}" placeholder="Shelter Email" />
+          <br />
+          <label> Image </label>
+          <input
+            type="text"
+            th:field="*{imageURL}"
+            placeholder="Shelter Image URL"
+          />
+          <br />
+          <label> Website </label>
+          <input
+            type="text"
+            th:field="*{shelterWebSite}"
+            placeholder="Shelter  Website URL"
+          />
+          <br />
+          <button type="submit" class="saveButton" th:text="${title}"></button>
+          <a
+          th:href="@{/shelters}"
+          class="cancelButton"
+          ><button>Cancel</button></a
+        >
+        </form>
+      </div>
+    </div>
+    <div th:replace="./fragments/footerFragment :: footer"></div>
+  </body>
+</html>

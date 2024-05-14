@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Organic Pets</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/VP4.css}" />
+  </head>
+  <body>
+    <div th:replace="./fragments/headerFragment :: header"></div>
+    <div class="content">
+      <h1>Organic Pets</h1>
+      <div class="addButton">
+        <a th:href="@{/organicPets/create}"><button>Add Organic Pet</button></a>
+      </div>
+      <table class="organicPetList">
+        <thead>
+          <tr>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Breed</th>
+            <th>Age</th>
+            <th>Health</th>
+            <th>Mood</th>
+            <th>Temperament</th>
+            <th>Fixed</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:each="organicPet : ${organicPets}">
+            <td th:image="${organicPet.imageURL}"></td>
+              <td th:text="${organicPet.petName}"></td>
+              <td th:text="${organicPet.petType}"></td>
+              <td th:text="${organicPet.breed}"></td>
+              <td th:text="${organicPet.petAge}"></td>
+              <td th:text="${organicPet.petHealth}"></td>
+              <td th:text="${organicPet.petMood}"></td>
+              <td th:text="${organicPet.petTemperament}"></td>
+              <td th:text="${organicPet.petFixed}"></td>
+            <td><a th:href="@{/organicPets/{id}(id=${organicPet.id})}" class="detailsButton"><button>Details</button></a>
+              <a th:href="@{/organicPets/edit/{id}(id=${organicPet.id})}" class="editButton"><button>Edit</button></a>
+              <a th:href="@{/organicPets/delete/{id}(id=${organicPet.id})}"class="deleteButton"><button>Delete</button></a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div th:replace="./fragments/footerFragment :: footer"></div>
+  </body>
+</html>

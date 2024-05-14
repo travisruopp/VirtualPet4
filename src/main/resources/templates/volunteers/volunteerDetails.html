@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volunteer Detail</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/details.css}">
+</head>
+<body>
+    <div th:replace="./fragments/headerFragment :: header"></div>
+    <div class="content">
+    <h1>Volunteer Details</h1>
+    <div class = "detailsBlock">
+    <label class="detailsLabel"> Name </label>
+    <label th:text="${volunteer.name}"></label><br>
+    <label class="detailsLabel"> Address Line 1</label>
+    <label th:text="${volunteer.addressLine1}"></label><br>
+    <label class="detailsLabel"> Address Line 2</label>
+    <label th:text="${volunteer.addressLine2}"></label><br>
+    <label class="detailsLabel"> City </label>
+    <label th:text="${volunteer.city}"></label><br>
+    <label class="detailsLabel"> State </label>
+    <label th:text="${volunteer.state}"></label><br>
+    <label class="detailsLabel"> Zip </label>
+    <label th:text="${volunteer.zip}"></label><br>
+    <label class="detailsLabel"> Phone Number</label>
+    <label th:text="${volunteer.phoneNumber}"></label><br>
+    <label class="detailsLabel"> Email</label>
+    <label th:text="${volunteer.email}"></label><br>
+    <label class="detailsLabel"> Image</label>
+    <label th:text="${volunteer.imageURL}"></label><br>
+    </div>
+    <a th:href="@{/volunteers}" class="volunteersReturnButton"><button> Return to Volunteers</button></a>
+    <a th:href="@{edit/{id}(id=${volunteer.Id})}" class="editButton"> <button> Edit </button></a>
+    <a th:href="@{delete/{id}(id=${volunteer.Id})}" class="deleteButton"> <button> Delete </button></a></td>
+</div>
+    <h3>Volunteer's Shelters</h3>
+    <table class="shelterList">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Address Line 1</th>
+          <th>Address Line 2</th>
+          <th>City</th>
+          <th>State</th>
+          <th>Zip</th>
+          <th>Phone Number</th>
+          <th>Email</th>
+          <th>Image</th>
+          <th>Website</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr th:each="shelter : ${shelters}">
+          <td th:text="${shelter.name}"></td>
+          <td th:text="${shelter.addressLine1}"></td>
+          <td th:text="${shelter.addressLine2}"></td>
+          <td th:text="${shelter.city}"></td>
+          <td th:text="${shelter.state}"></td>
+          <td th:text="${shelter.zip}"></td>
+          <td th:text="${shelter.phoneNumber}"></td>
+          <td th:text="${shelter.email}"></td>
+          <td th:image="${shelter.imageURL}"></td>
+          <td th:text="${shelter.shelterWebSite}"></td>
+          <td>
+            <a
+              th:href="@{/shelters/{id}(id=${shelter.id})}"
+              class="detailsButton"
+              ><button>Details</button></a
+            >
+            <a
+              th:href="@{/shelters/edit/{id}(id=${shelter.id})}"
+              class="editButton"
+              ><button>Edit</button></a
+            >
+            <a
+              th:href="@{/shelters/delete/{id}(id=${shelter.id})}"
+              class="deleteButton"
+              ><button>Delete</button></a
+            >
+          </td>
+        </tr>
+      </tbody>
+    </table>
+<div th:replace="./fragments/footerFragment :: footer"></div>
+</body>
+
+</html>

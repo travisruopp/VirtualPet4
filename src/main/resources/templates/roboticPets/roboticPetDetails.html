@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Robotic Pet Detail</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/details.css}">
+</head>
+<body>
+    <div th:replace="./fragments/headerFragment :: header"></div>
+    <div class="content">
+    <h1>Robotic Pet Details</h1>
+    <div class = "detailsBlock">
+    <label class="detailsLabel"> Name </label>
+    <label th:text="${roboticPet.petName}"></label><br>
+    <label class="detailsLabel"> Type </label>
+    <label th:text="${roboticPet.petType}"></label><br>
+    <label class="detailsLabel"> Model </label>
+    <label th:text="${roboticPet.model}"></label><br>
+    <label class="detailsLabel"> Manufacturer </label>
+    <label th:text="${roboticPet.manufacturer}"></label><br>
+    <label class="detailsLabel"> Health </label>
+    <label th:text="${roboticPet.petHealth}"></label><br>
+    <label class="detailsLabel"> Energy Level </label>
+    <label th:text="${roboticPet.energyLevel}"></label><br>
+    <label class="detailsLabel"> Oil Level </label>
+    <label th:text="${roboticPet.oilLevel}"></label><br>
+    <label class="detailsLabel"> Image </label>
+    <label th:text="${roboticPet.imageURL}"></label><br>
+    </div>
+    <a th:href="@{/roboticPets}" class="roboticPetsReturnButton"><button> Return to Robotic Pets</button></a>
+    <a th:href="@{edit/{id}(id=${roboticPet.id})}" class="editButton"> <button> Edit </button></a>
+    <a th:href="@{delete/{id}(id=${roboticPet.id})}" class="deleteButton"> <button> Delete </button></a>
+</div>
+<div th:replace="./fragments/footerFragment :: footer"></div>
+</body>
+
+</html>

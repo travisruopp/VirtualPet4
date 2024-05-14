@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organic Pet Detail</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/details.css}">
+</head>
+<body>
+    <div th:replace="./fragments/headerFragment :: header"></div>
+    <div class="content">
+    <h1>Organic Pet Details</h1>
+    <div class = "detailsBlock">
+    <label class="detailsLabel"> Name </label>
+    <label th:text="${organicPet.petName}"></label><br>
+    <label class="detailsLabel"> Type </label>
+    <label th:text="${organicPet.petType}"></label><br>
+    <label class="detailsLabel"> Breed </label>
+    <label th:text="${organicPet.breed}"></label><br>
+    <label class="detailsLabel"> Age </label>
+    <label th:text="${organicPet.petAge}"></label><br>
+    <label class="detailsLabel"> Health </label>
+    <label th:text="${organicPet.petHealth}"></label><br>
+    <label class="detailsLabel"> Mood </label>
+    <label th:text="${organicPet.petMood}"></label><br>
+    <label class="detailsLabel"> Temperament </label>
+    <label th:text="${organicPet.petTemperament}"></label><br>
+    <label class="detailsLabel"> Fixed </label>
+    <label th:text="${organicPet.petFixed}"></label><br>
+    <label class="detailsLabel"> Image </label>
+    <label th:text="${organicPet.imageURL}"></label><br>
+    </div>
+    <a
+        th:href="@{organicPetConfirmDelete/{id}(id=${organicPet.id})}"
+        class="confirmButton"
+        ><button>BYE BYE</button></a
+      >
+      <a th:href="@{/sorganicPets}" class="cancelButton"><button>Cancel</button></a>
+</div>
+<div th:replace="./fragments/footerFragment :: footer"></div>
+</body>
+
+</html>

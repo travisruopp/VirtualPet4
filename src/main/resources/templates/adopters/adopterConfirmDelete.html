@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Adopter Detail</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/details.css}" />
+  </head>
+  <body>
+    <div th:replace="./fragments/headerFragment :: header"></div>
+    <div class="content">
+      <h1>Adopter Details</h1>
+      <div class="detailsBlock">
+        <label class="detailsLabel"> Name </label>
+        <label th:text="${adopter.name}"></label><br />
+        <label class="detailsLabel"> Address Line 1</label>
+        <label th:text="${adopter.addressLine1}"></label><br />
+        <label class="detailsLabel"> Address Line 2</label>
+        <label th:text="${adopter.addressLine2}"></label><br />
+        <label class="detailsLabel"> City </label>
+        <label th:text="${adopter.city}"></label><br />
+        <label class="detailsLabel"> State </label>
+        <label th:text="${adopter.state}"></label><br />
+        <label class="detailsLabel"> Zip </label>
+        <label th:text="${adopter.zip}"></label><br />
+        <label class="detailsLabel"> Phone Number</label>
+        <label th:text="${adopter.phoneNumber}"></label><br />
+        <label class="detailsLabel"> Email</label>
+        <label th:text="${adopter.email}"></label><br />
+        <label class="detailsLabel"> Image</label>
+        <label th:text="${adopter.imageURL}"></label><br />
+        <label class="detailsLabel"> Preferred Pet Type</label>
+        <label th:text="${adopter.preferredPetType}"></label><br />
+        <label class="detailsLabel"> Adoption Status</label>
+        <label th:text="${adopter.adoptionStatus}"></label><br />
+        <label class="detailsLabel"> Notes</label>
+        <label th:text="${adopter.notes}"></label><br />
+      </div>
+      <a
+        th:href="@{adopterConfirmDelete/{id}(id=${adopter.id})}"
+        class="confirmButton"
+        ><button>BYE BYE</button></a
+      >
+      <a th:href="@{/adopters}" class="cancelButton"><button>Cancel</button></a>
+    </div>
+    <div th:replace="./fragments/footerFragment :: footer"></div>
+  </body>
+</html>

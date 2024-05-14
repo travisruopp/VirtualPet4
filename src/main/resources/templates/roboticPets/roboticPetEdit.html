@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Robotic Pet Edit</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/details.css}" />
+  </head>
+  <body>
+    <div th:replace="./fragments/headerFragment :: header"></div>
+    <div class="content">
+      <h1 th:text="${title}"></h1>
+      <div class="detailsBlock">
+        <form
+          action="#"
+          th:action="@{/roboticPets/save}"
+          th:object="${roboticPet}"
+          method="post"
+        >
+          <input type="hidden" th:field="*{id}" />
+          <label> Name </label>
+          <input
+            type="text"
+            th:field="*{petName}"
+            placeholder="Robotic Pet Name"
+          />
+          <br />
+          <label> Type </label>
+          <select th:field="*{petType}">
+            <option
+              th:each="p : ${listPetType}"
+              th:value="${p}"
+              th:text="${p}"
+            /></select
+          ><br />
+          <label> Model </label>
+          <input
+            type="text"
+            th:field="*{model}"
+            placeholder="Robotic Pet Model"
+          />
+          <br />
+          <label> Manufacturer </label>
+          <input
+            type="text"
+            th:field="*{manufacturer}"
+            placeholder="Robotic Pet Manufacturer"
+          />
+          <br />
+          <label> Health </label>
+          <select th:field="*{petHealth}">
+            <option
+              th:each="p : ${listPetHealth}"
+              th:value="${p}"
+              th:text="${p}"
+            /></select
+          ><br />
+          <label> Energy Level </label>
+          <input
+            type="text"
+            th:field="*{energyLevel}"
+            placeholder="Robotic Pet Energy Level"
+          />
+          <br />
+          <label> Oil Level </label>
+          <input
+            type="text"
+            th:field="*{oilLevel}"
+            placeholder="Robotic Pet Oil Level"
+          />
+          <br />
+          <label> Image </label>
+          <input
+            type="text"
+            th:field="*{imageURL}"
+            placeholder="Robotic Pet Image URL"
+          />
+          <br />
+          <label> Shelter </label>
+          <select th:field="*{shelterId}">
+            <option 
+              th:each="p : ${shelters}"
+              th:value="${p.id}"
+              th:text="${p.name}"
+              /></select>
+              <br/>
+          <button type="submit" class="saveButton" th:text="${title}"></button>
+          <a
+          th:href="@{/roboticPets}"
+          class="cancelButton"
+          ><button>Cancel</button></a
+        >
+        </form>
+        
+      </div>
+    </div>
+    <div th:replace="./fragments/footerFragment :: footer"></div>
+  </body>
+</html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shelter Detail</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/details.css}">
+</head>
+<body>
+    <div th:replace="./fragments/headerFragment :: header"></div>
+    <div class="content">
+    <h1>Shelter Details</h1>
+    <div class = "detailsBlock">
+    <label class="detailsLabel"> Name </label>
+    <label th:text="${shelter.name}"></label><br>
+    <label class="detailsLabel"> Address Line 1</label>
+    <label th:text="${shelter.addressLine1}"></label><br>
+    <label class="detailsLabel"> Address Line 2</label>
+    <label th:text="${shelter.addressLine2}"></label><br>
+    <label class="detailsLabel"> City </label>
+    <label th:text="${shelter.city}"></label><br>
+    <label class="detailsLabel"> State </label>
+    <label th:text="${shelter.state}"></label><br>
+    <label class="detailsLabel"> Zip </label>
+    <label th:text="${shelter.zip}"></label><br>
+    <label class="detailsLabel"> Phone Number</label>
+    <label th:text="${shelter.phoneNumber}"></label><br>
+    <label class="detailsLabel"> Email</label>
+    <label th:text="${shelter.email}"></label><br>
+    <label class="detailsLabel"> Image</label>
+    <label th:text="${shelter.imageURL}"></label><br>
+    <label class="detailsLabel"> Website </label>
+    <label th:text="${shelter.shelterWebSite}"></label><br>
+    </div>
+    <a th:href="@{/shelters}" class="sheltersReturnButton"><button> Return to Shelters</button></a>
+    <a th:href="@{edit/{id}(id=${shelter.id})}" class="editButton"> <button> Edit </button></a>
+    <a th:href="@{delete/{id}(id=${shelter.id})}" class="deleteButton"> <button> Delete </button></a></td>
+<div th:if = "${shelter.organicPets.size()>0}">
+    <h3>Organic Pets in Shelter</h3>
+      <table class="listTable">
+        <thead>
+          <tr>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Breed</th>
+            <th>Age</th>
+            <th>Health</th>
+            <th>Mood</th>
+            <th>Temperament</th>
+            <th>Fixed</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:each="organicPet : ${shelter.organicPets}">
+            <td th:image="${organicPet.imageURL}"></td>
+              <td th:text="${organicPet.petName}"></td>
+              <td th:text="${organicPet.petType}"></td>
+              <td th:text="${organicPet.breed}"></td>
+              <td th:text="${organicPet.petAge}"></td>
+              <td th:text="${organicPet.petHealth}"></td>
+              <td th:text="${organicPet.petMood}"></td>
+              <td th:text="${organicPet.petTemperament}"></td>
+              <td th:text="${organicPet.petFixed}"></td>
+            <td><a th:href="@{/organicPets/{id}(id=${organicPet.id})}" class="detailsButton"><button>Details</button></a>
+              <a th:href="@{/organicPets/edit/{id}(id=${organicPet.id})}" class="editButton"><button>Edit</button></a>
+              <a th:href="@{/organicPets/delete/{id}(id=${organicPet.id})}"class="deleteButton"><button>Delete</button></a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div th:if = "${shelter.roboticPets.size()>0}">
+      <h3>Robotic Pets in Shelter</h3>
+      
+      <table class="roboticPetList">
+        <thead>
+          <tr>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Model</th>
+            <th>Manufacturer</th>
+            <th>Energy Level</th>
+            <th>Oil Level</th>
+            <th>Health</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:each="roboticPet : ${shelter.roboticPets}">
+            <td th:Image="${roboticPet.imageURL}"></td>
+              <td th:text="${roboticPet.petName}"></td>
+              <td th:text="${roboticPet.petType}"></td>
+              <td th:text="${roboticPet.model}"></td>
+              <td th:text="${roboticPet.manufacturer}"></td>
+              <td th:text="${roboticPet.petHealth}"></td>
+              <td th:text="${roboticPet.energyLevel}"></td>
+              <td th:text="${roboticPet.oilLevel}"></td>
+              <td th:Image="${roboticPet.imageURL}"></td>
+            <td><a th:href="@{/roboticPets/{id}(id=${roboticPet.id})}" class="detailsButton"><button>Details</button></a>
+              <a th:href="@{/roboticPets/edit/{id}(id=${roboticPet.id})}" class="editButton"><button>Edit</button></a>
+              <a th:href="@{/roboticPets/delete/{id}(id=${roboticPet.id})}"class="deleteButton"><button>Delete</button></a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+      <div th:if = "${shelter.adopters.size()>0}">
+      <h3>Adopters in Shelter</h3>
+      <table class="adopterList">
+        <thead>
+          <tr>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Address Line 1</th>
+            <th>Address Line 2</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Zip</th>
+            <th>Phone Number</th>
+            <th>Email</th>
+            <th>Preferred Pet Type</th>
+            <th>Adoption Status</th>
+            <th>Notes</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:each="adopter : ${shelter.adopters}">
+            <td th:image="${adopter.imageURL}"></td>
+              <td th:text="${adopter.name}"></td>
+              <td th:text="${adopter.addressLine1}"></td>
+              <td th:text="${adopter.addressLine2}"></td>
+              <td th:text="${adopter.city}"></td>
+              <td th:text="${adopter.state}"></td>
+              <td th:text="${adopter.zip}"></td>
+              <td th:text="${adopter.phoneNumber}"></td>
+              <td th:text="${adopter.email}"></td>
+              <td th:text="${adopter.imageURL}"></td>
+              <td th:text="${adopter.preferredPetType}"></td>
+              <td th:text="${adopter.adoptionStatus}"></td>
+              <td th:text="${adopter.notes}"></td>
+            <td><a th:href="@{/adopters/{id}(id=${adopter.id})}" class="detailsButton"><button>Details</button></a>
+              <a th:href="@{/adopters/edit/{id}(id=${adopter.id})}" class="editButton"><button>Edit</button></a>
+              <a th:href="@{/adopters/delete/{id}(id=${adopter.id})}"class="deleteButton"><button>Delete</button></a
+              >
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+      <div th:if = "${shelter.volunteers.size()>0}">
+      <h3>Volunteers in Shelter</h3>
+      <table class="volunteerList">
+        <thead>
+          <tr>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Address Line 1</th>
+            <th>Address Line 2</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Zip</th>
+            <th>Phone Number</th>
+            <th>Email</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:each="volunteer : ${shelter.volunteers}">
+            <td th:image="${volunteer.imageURL}"></td>
+              <td th:text="${volunteer.name}"></td>
+              <td th:text="${volunteer.addressLine1}"></td>
+              <td th:text="${volunteer.addressLine2}"></td>
+              <td th:text="${volunteer.city}"></td>
+              <td th:text="${volunteer.state}"></td>
+              <td th:text="${volunteer.zip}"></td>
+              <td th:text="${volunteer.phoneNumber}"></td>
+              <td th:text="${volunteer.email}"></td>
+            <td><a th:href="@{/volunteers/{id}(id=${volunteer.id})}" class="detailsButton"><button>Details</button></a>
+              <a th:href="@{/volunteers/edit/{id}(id=${volunteer.id})}" class="editButton"><button>Edit</button></a>
+              <a th:href="@{/volunteers/delete/{id}(id=${volunteer.id})}"class="deleteButton"><button>Delete</button></a
+              >
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+</div>
+<div th:replace="./fragments/footerFragment :: footer"></div>
+</body>
+
+</html>

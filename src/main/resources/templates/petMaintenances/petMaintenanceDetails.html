@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Maintenance Detail</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/details.css}">
+</head>
+<body>
+    <div th:replace="./fragments/headerFragment.html :: header"></div>
+    <div class="content">
+    <h1>Pet Maintenance Details</h1>
+    <div class = "detailsBlock">
+    <label class="detailsLabel"> Name </label>
+    <label th:text="${petMaintenance.name}"></label><br>
+    <label class="detailsLabel"> Type </label>
+    <label th:text="${petMaintenance.petType}"></label><br>
+    <label class="detailsLabel"> Frequency </label>
+    <label th:text="${petMaintenance.frequency}"></label><br>
+    <label class="detailsLabel"> Effected Property </label>
+    <label th:text="${petMaintenance.effectedProperty}"></label><br>
+    </div>
+    <a th:href="@{/petMaintenances}" class="petMaintenancesReturnButton"><button> Return to Pet Maintenances</button></a>
+    <a th:href="@{edit/{id}(id=${petMaintenance.id})}" class="editButton"> <button> Edit </button></a>
+    <a th:href="@{delete/{id}(id=${petMaintenance.id})}" class="deleteButton"> <button> Delete </button></a></td>
+</div>
+<div th:replace="./fragments/footerFragment :: footer"></div>
+</body>
+
+</html>

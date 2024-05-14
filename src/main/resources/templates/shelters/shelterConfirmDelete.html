@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shelter Detail</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/details.css}" />
+  </head>
+  <body>
+    <div th:replace="./fragments/headerFragment :: header"></div>
+    <div class="content">
+      <h1>Shelter Details</h1>
+      <div class="detailsBlock">
+        <label class="detailsLabel"> Name </label>
+        <label th:text="${shelter.name}"></label><br />
+        <label class="detailsLabel"> Address Line 1</label>
+        <label th:text="${shelter.addressLine1}"></label><br />
+        <label class="detailsLabel"> Address Line 2</label>
+        <label th:text="${shelter.addressLine2}"></label><br />
+        <label class="detailsLabel"> City </label>
+        <label th:text="${shelter.city}"></label><br />
+        <label class="detailsLabel"> State </label>
+        <label th:text="${shelter.state}"></label><br />
+        <label class="detailsLabel"> Zip </label>
+        <label th:text="${shelter.zip}"></label><br />
+        <label class="detailsLabel"> Phone Number</label>
+        <label th:text="${shelter.phoneNumber}"></label><br />
+        <label class="detailsLabel"> Email</label>
+        <label th:text="${shelter.email}"></label><br />
+        <label class="detailsLabel"> Image</label>
+        <label th:text="${shelter.imageURL}"></label><br />
+        <label class="detailsLabel"> Website </label>
+        <label th:text="${shelter.shelterWebSite}"></label><br />
+      </div>
+      <a
+        th:href="@{shelterConfirmDelete/{id}(id=${shelter.id})}"
+        class="confirmButton"
+        ><button>BYE BYE</button></a
+      >
+      <a th:href="@{/shelters}" class="cancelButton"><button>Cancel</button></a>
+    </div>
+    <div th:replace="./fragments/footerFragment :: footer"></div>
+  </body>
+</html>

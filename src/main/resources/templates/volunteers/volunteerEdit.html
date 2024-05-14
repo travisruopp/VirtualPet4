@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Volunteer Edit</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/details.css}" />
+  </head>
+  <body>
+    <div th:replace="./fragments/headerFragment :: header"></div>
+    <div class="content">
+      <h1 th:text="${title}"></h1>
+      <div class="detailsBlock">
+        <form
+          action="#"
+          th:action="@{/volunteers/save}"
+          th:object="${volunteer}"
+          method="post"
+        >
+          <input type="hidden" th:field="*{id}" />
+          <label> Name </label>
+          <input type="text" th:field="*{name}" placeholder="Volunteer Name" />
+          <br />
+          <label> Address Line 1 </label>
+          <input
+            type="text"
+            th:field="*{addressLine1}"
+            placeholder="Volunteer Address Line 1"
+          />
+          <br />
+          <label> Address Line 2 </label>
+          <input
+            type="text"
+            th:field="*{addressLine2}"
+            placeholder="Volunteer Address Line 2"
+          />
+          <br />
+          <label> City </label>
+          <input type="text" th:field="*{city}" placeholder="Volunteer City" />
+          <br />
+          <label> State </label>
+          <input
+            type="text"
+            th:field="*{state}"
+            placeholder="Volunteer State"
+          />
+          <br />
+          <label> Zip </label>
+          <input type="text" th:field="*{zip}" placeholder="Volunteer Zip" />
+          <br />
+          <label> Phone Number </label>
+          <input
+            type="text"
+            th:field="*{phoneNumber}"
+            placeholder="Volunteer Phone Number"
+          />
+          <br />
+          <label> Email </label>
+          <input
+            type="text"
+            th:field="*{email}"
+            placeholder="Volunteer Email"
+          />
+          <br />
+          <label> Image </label>
+          <input
+            type="text"
+            th:field="*{imageURL}"
+            placeholder="Volunteer Image URL"
+          />
+          <br />
+          <button type="submit" class="saveButton" th:text="${title}"></button>
+        </form>
+        <a
+          th:href="@{/volunteers}"
+          class="cancelButton"
+          ><button>Cancel</button></a
+        >
+      </div>
+    </div>
+    <div th:replace="./fragments/footerFragment :: footer"></div>
+  </body>
+</html>

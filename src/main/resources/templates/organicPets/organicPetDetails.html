@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organic Pet Detail</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/details.css}">
+</head>
+<body>
+    <div th:replace="./fragments/headerFragment :: header"></div>
+    <div class="content">
+    <h1>Organic Pet Details</h1>
+    <div class = "detailsBlock">
+    <label class="detailsLabel"> Name </label>
+    <label th:text="${organicPet.petName}"></label><br>
+    <label class="detailsLabel"> Type </label>
+    <label th:text="${organicPet.petType}"></label><br>
+    <label class="detailsLabel"> Breed </label>
+    <label th:text="${organicPet.breed}"></label><br>
+    <label class="detailsLabel"> Age </label>
+    <label th:text="${organicPet.petAge}"></label><br>
+    <label class="detailsLabel"> Health </label>
+    <label th:text="${organicPet.petHealth}"></label><br>
+    <label class="detailsLabel"> Mood </label>
+    <label th:text="${organicPet.petMood}"></label><br>
+    <label class="detailsLabel"> Temperament </label>
+    <label th:text="${organicPet.petTemperament}"></label><br>
+    <label class="detailsLabel"> Fixed </label>
+    <label th:text="${organicPet.petFixed}"></label><br>
+    <label class="detailsLabel"> Image </label>
+    <label th:text="${organicPet.imageURL}"></label><br>
+    </div>
+    <!-- <div th:if = "${organicPet.shelterModel != 0 && organicPet.shelterModel != null}">
+        <h3>Adopters in Shelter</h3>
+        <table class="adopterList">
+          <thead>
+            <tr>
+              <th>Image</th>
+              <th>Name</th>
+              <th>Address Line 1</th>
+              <th>Address Line 2</th>
+              <th>City</th>
+              <th>State</th>
+              <th>Zip</th>
+              <th>Phone Number</th>
+              <th>Email</th>
+              <th>Preferred Pet Type</th>
+              <th>Adoption Status</th>
+              <th>Notes</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr th:each="shelter : ${organicPet.shelter}">
+              <td th:image="${adopter.imageURL}"></td>
+                <td th:text="${adopter.name}"></td>
+                <td th:text="${adopter.addressLine1}"></td>
+                <td th:text="${adopter.addressLine2}"></td>
+                <td th:text="${adopter.city}"></td>
+                <td th:text="${adopter.state}"></td>
+                <td th:text="${adopter.zip}"></td>
+                <td th:text="${adopter.phoneNumber}"></td>
+                <td th:text="${adopter.email}"></td>
+                <td th:text="${adopter.imageURL}"></td>
+                <td th:text="${adopter.preferredPetType}"></td>
+                <td th:text="${adopter.adoptionStatus}"></td>
+                <td th:text="${adopter.notes}"></td>
+              <td><a th:href="@{/adopters/{id}(id=${adopter.id})}" class="detailsButton"><button>Details</button></a>
+                <a th:href="@{/adopters/edit/{id}(id=${adopter.id})}" class="editButton"><button>Edit</button></a>
+                <a th:href="@{/adopters/delete/{id}(id=${adopter.id})}"class="deleteButton"><button>Delete</button></a
+                >
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        </div> -->
+    <a th:href="@{/organicPets}" class="organicPetsReturnButton"><button> Return to Organic Pets</button></a>
+    <a th:href="@{edit/{id}(id=${organicPet.id})}" class="editButton"> <button> Edit </button></a>
+    <a th:href="@{delete/{id}(id=${organicPet.id})}" class="deleteButton"> <button> Delete </button></a></td>
+</div>
+<div th:replace="./fragments/footerFragment :: footer"></div>
+</body>
+
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Organic Pet Edit</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/details.css}" />
+  </head>
+  <body>
+    <div th:replace="./fragments/headerFragment :: header"></div>
+    <div class="content">
+      <h1 th:text="${title}"></h1>
+      <div class="detailsBlock">
+        <form
+          action="#"
+          th:action="@{/organicPets/save}"
+          th:object="${organicPet}"
+          method="post"
+        >
+          <input type="hidden" th:field="*{id}" />
+          <label> Name </label>
+          <input
+            type="text"
+            th:field="*{petName}"
+            placeholder="Organic Pet Name"
+          />
+          <br />
+          <label> Type </label>
+          <select th:field="*{petType}">
+            <option
+              th:each="p : ${listPetType}"
+              th:value="${p}"
+              th:text="${p}"
+            ></select
+          ><br />
+          <label> Breed </label>
+          <input
+            type="text"
+            th:field="*{breed}"
+            placeholder="Organic Pet Model"
+          />
+          <br />
+          <label> Age </label>
+          <input
+            type="text"
+            th:field="*{petAge}"
+            placeholder="Organic Pet Manufacturer"
+          />
+          <br />
+          <label> Health </label>
+          <select th:field="*{petHealth}">
+            <option
+              th:each="p : ${listPetHealth}"
+              th:value="${p}"
+              th:text="${p}"
+            ></select
+          ><br />
+          <label> Mood </label>
+          <select th:field="*{petMood}">
+            <option
+              th:each="p : ${listPetMood}"
+              th:value="${p}"
+              th:text="${p}"
+            ></select
+          ><br />
+          <label> Temperament </label>
+          <select th:field="*{petTemperament}">
+            <option
+              th:each="p : ${listPetTemperament}"
+              th:value="${p}"
+              th:text="${p}"
+            ></select
+          ><br />
+          <label> Fixed </label>
+          <input type="checkbox" th:field="*{petFixed}" /><br />
+          <label> Image </label>
+          <input
+            type="text"
+            th:field="*{imageURL}"
+            placeholder="Organic Pet Image URL"
+          />
+          <br />
+          <label> Shelter </label>
+          <select th:field="*{shelterId}">
+            <option 
+              th:each="p : ${shelters}"
+              th:value="${p.id}"
+              th:text="${p.name}"
+              /></select>
+              <br/>
+          <button type="submit" class="saveButton" th:text="${title}"></button>
+          <a
+          th:href="@{/organicPets}"
+          class="cancelButton"
+          ><button>Cancel</button></a
+        >
+        </form>
+        
+      </div>
+    </div>
+    <div th:replace="./fragments/footerFragment :: footer"></div>
+  </body>
+</html>
